@@ -28,6 +28,7 @@ app.set("view engine", "handlebars");
 // If deployed, use the deployed database. Otherwise use the local newsapp database
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsapp";
 
+
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
@@ -45,6 +46,7 @@ app.get("/saved", (req, res) => {
 
 
     app.get("/scrape", (req, res) => {
+        console.log("scrapping") 
         request("https://www.vox.com/", (error, res, html) => {
             var $ = cheerio.load(html);
             var result = {};
